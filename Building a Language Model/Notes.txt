@@ -1,0 +1,13 @@
+This code is similar to the earlier code block that built frequency counts for unigrams, but it uses the laplace_smoothing function to apply Laplace smoothing to the unigram frequency counts. The smoothing parameter k controls the degree of smoothing, with larger values of k resulting in more smoothing.
+
+    # Set the smoothing parameter
+
+Removing low-frequency words from both the training and test sets ensures that the model will perform similarly on both the training and test data, as both sets will now contain the same set of vocabulary. This helps to avoid any overfitting that may occur if the model has learned to depend on specific rare words in the training data that do not occur in the test data.
+
+I chose to use trigram with Laplace smoothing because trigram language models typically capture more complex patterns and dependencies in language than unigram and bigram models. However, trigram models can suffer from data sparsity issues, meaning that many possible trigrams may not occur in the training corpus. To address this issue, Laplace smoothing can be applied to the trigram counts to assign non-zero probabilities to unseen trigrams.
+
+Laplace smoothing is used to avoid zero-count problems in the probability calculation. In the code you provided, Laplace smoothing is applied to all three types of n-grams (unigrams, bigrams, and trigrams) in the calculation of the probability of a sentence using linear interpolation. The smoothed probability of each n-gram is used in the interpolation formula to obtain the overall probability of the sentence.
+
+The probabilities are very small because the models are dealing with very unlikely sentences. The probability values for Laplace and UNK models are even smaller because they add a smoothing factor or replace unknown words with an <UNK> token, which reduces the probability of unknown words affecting the overall sentence probability.
+
+I made the necessary changes to import the ngrams function from the nltk.util module to avoid the NameError.
