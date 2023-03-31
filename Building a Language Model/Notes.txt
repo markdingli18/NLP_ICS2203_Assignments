@@ -11,3 +11,9 @@ Laplace smoothing is used to avoid zero-count problems in the probability calcul
 The probabilities are very small because the models are dealing with very unlikely sentences. The probability values for Laplace and UNK models are even smaller because they add a smoothing factor or replace unknown words with an <UNK> token, which reduces the probability of unknown words affecting the overall sentence probability.
 
 I made the necessary changes to import the ngrams function from the nltk.util module to avoid the NameError.
+
+The output you provided is showing the bigram probability of the input sentence "oxford art journal" for the "UNK" model to be 1, which means that the bigram (pair of adjacent words) in the sentence is present in the training data.
+
+Since the "UNK" model uses Laplace smoothing to handle out-of-vocabulary words, it assigns a non-zero probability to all words, including those that are not present in the training data. This is why the probability is not zero for this model.Note that the "Vanilla" and "Laplace" models might still give a probability of 0 for the bigram or trigram in the input sentence if they are not present in the training data, as they do not use smoothing techniques.
+
+the error is caused by the key "jumps" not being found in the vanilla_unigram_probs dictionary. This could be due to the word "jumps" not being in the training data. You can add an error handler
