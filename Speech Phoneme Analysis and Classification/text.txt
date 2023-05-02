@@ -1,0 +1,34 @@
+The random_state parameter is an integer that sets the seed for the random number generator used by the train_test_split function.
+By setting it to the current iteration index i, you ensure that each iteration uses a different random seed, resulting in a different training and test set each time.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+For k=3:
+Manhattan: Average F1 Score = 0.3168
+Euclidean: Average F1 Score = 0.3508
+
+For k=5:
+Manhattan: Average F1 Score = 0.3223
+Euclidean: Average F1 Score = 0.3495
+
+For k=7:
+Manhattan: Average F1 Score = 0.3371
+Euclidean: Average F1 Score = 0.2991
+
+For k=9:
+Manhattan: Average F1 Score = 0.3267
+Euclidean: Average F1 Score = 0.3469
+
+For k=11:
+Manhattan: Average F1 Score = 0.2953
+Euclidean: Average F1 Score = 0.2853
+
+From the results, we can observe that:
+
+The best performing k value for the Manhattan distance metric is k=7, with an average F1 score of 0.3371.
+The best performing k value for the Euclidean distance metric is k=3, with an average F1 score of 0.3508.
+Based on the highest average F1 scores, the Euclidean distance metric performs slightly better than the Manhattan distance metric in this case.
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
