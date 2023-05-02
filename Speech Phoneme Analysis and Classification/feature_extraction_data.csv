@@ -1,4 +1,4 @@
-﻿Entry Number,Accent,Speaker Label,Gender,Word,Vowel Phenome,Class Number,Format 1 (Hz),Format 2 (Hz),Format 3 (Hz)
+Entry Number,Accent,Speaker Label,Gender,Word,Vowel Phenome,Class Number,Formant 1 (Hz),Formant 2 (Hz),Formant 3 (Hz)
 1,brm_001,alw001,Female,Hid,IH,1,180,315,580
 2,brm_001,alw001,Female,Had,AE,2,139,685,1187
 3,brm_001,alw001,Female,Hood,UH,3,140,485,1006

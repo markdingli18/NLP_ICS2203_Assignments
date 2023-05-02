@@ -30,5 +30,3 @@ The best performing k value for the Euclidean distance metric is k=3, with an av
 Based on the highest average F1 scores, the Euclidean distance metric performs slightly better than the Manhattan distance metric in this case.
 
 -------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-
-

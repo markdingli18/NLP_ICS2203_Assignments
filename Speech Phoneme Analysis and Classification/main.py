@@ -4,16 +4,26 @@ import numpy as np
 from sklearn.model_selection import train_test_split
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.metrics import confusion_matrix, f1_score
+from sklearn.decomposition import PCA
 
 # Read the data from the CSV file
-filename = 'feature_extraction_data.csv'
+filename = 'new.csv'
 data = pd.read_csv(filename)
+
+# Perform PCA to select the most informative features
+pca = PCA(n_components=2)
+X = pca.fit_transform(data[['Formant 1 (Hz)', 'Formant 2 (Hz)', 'Formant 3 (Hz)']])
+y = data['Class Number']
 
 # Range of k values to try
 k_values = [3, 5, 7, 9, 11]
 
 # Number of experiments
 num_experiments = 5
+
+# Distance metric to use
+distance_metric = 'mahalanobis'
+metric_params = {'V': np.cov(X.T)}
 
 # Initialize variables to store the best k and its average F1 score
 best_k = None
@@ -27,15 +37,11 @@ for k in k_values:
     
     # Loop through the number of experiments
     for i in range(num_experiments):
-        # Preprocess the data and split it into training and test sets
-        X = data[['Format 1 (Hz)', 'Format 2 (Hz)', 'Format 3 (Hz)']]
-        y = data['Class Number']
-        
         # Split the data into training and test sets, ensuring different sets in each experiment
-        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, stratify=data['Gender'], random_state=i)
+        X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=i)
 
         # Implement the k-Nearest Neighbors algorithm with the current k value
-        knn = KNeighborsClassifier(n_neighbors=k)
+        knn = KNeighborsClassifier(n_neighbors=k, metric=distance_metric, metric_params=metric_params)
         knn.fit(X_train, y_train)
 
         # Predict the phoneme classes for the test data
