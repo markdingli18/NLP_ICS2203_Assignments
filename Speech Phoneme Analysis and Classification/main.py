@@ -22,7 +22,7 @@ k_values = [3, 5, 7, 9, 11]
 num_experiments = 5
 
 # Distance metric to use
-#distance_metric = 'manhattan'
+distance_metric = 'chebyshev'
 
 # Initialize variables to store the best k and its average F1 score
 best_k = None
@@ -40,7 +40,7 @@ for k in k_values:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=i)
 
         # Implement the k-Nearest Neighbors algorithm with the current k value
-        knn = KNeighborsClassifier(n_neighbors=k)
+        knn = KNeighborsClassifier(n_neighbors=k, metric=distance_metric)
         knn.fit(X_train, y_train)
 
         # Predict the phoneme classes for the test data
