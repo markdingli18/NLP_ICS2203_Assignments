@@ -7,7 +7,7 @@ from sklearn.metrics import confusion_matrix, f1_score
 from sklearn.decomposition import PCA
 
 # Read the data from the CSV file
-filename = 'new.csv'
+filename = 'feature_extraction_data.csv'
 data = pd.read_csv(filename)
 
 # Perform PCA to select the most informative features
@@ -22,8 +22,7 @@ k_values = [3, 5, 7, 9, 11]
 num_experiments = 5
 
 # Distance metric to use
-distance_metric = 'mahalanobis'
-metric_params = {'V': np.cov(X.T)}
+#distance_metric = 'manhattan'
 
 # Initialize variables to store the best k and its average F1 score
 best_k = None
@@ -41,7 +40,7 @@ for k in k_values:
         X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.25, random_state=i)
 
         # Implement the k-Nearest Neighbors algorithm with the current k value
-        knn = KNeighborsClassifier(n_neighbors=k, metric=distance_metric, metric_params=metric_params)
+        knn = KNeighborsClassifier(n_neighbors=k)
         knn.fit(X_train, y_train)
 
         # Predict the phoneme classes for the test data
